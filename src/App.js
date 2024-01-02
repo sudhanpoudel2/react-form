@@ -37,7 +37,8 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://localhost:5000/getUserData", {
+        console.log("hello");
+        const response = await fetch("http://localhost:3000/getUserData", {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',
@@ -45,6 +46,7 @@ function App() {
         });
         const json = await response.json();
         setUsers(json);
+        console.log(json);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -244,16 +246,17 @@ function App() {
                         Submit 
                     </button> 
                 </form> 
-            </fieldset> 
-            <div>
+                <div>
             <h2>User List</h2>
       <ul>
         {users.map((user) => (
           <li key={user._id}>
-            {user.name} - {user.email}
+            {user._id} - {user.createdAt}
           </li>
         ))}
         </ul></div> 
+            </fieldset> 
+          
         </div> 
     ); 
 } 
