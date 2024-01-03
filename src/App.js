@@ -38,8 +38,8 @@ function App() {
     async function fetchData() {
       try {
         console.log("hello");
-        const response = await fetch("http://localhost:3000/getUserData", {
-          method: "GET",
+        const response = await fetch("http://localhost:5000/getUserData/${userId}", {
+          method: "PUT",
           headers: {
             'Content-Type': 'application/json',
           },
@@ -72,7 +72,7 @@ function App() {
     
         try {
             const response = await fetch('http://localhost:5000/data', {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -195,7 +195,7 @@ function App() {
                         name="file"
                         id="file"
                         placeholder="Enter Upload File"
-                        onChange={(e) => setResume(e.target.value)}
+                        onChange={(e) => setResume(e.target.files[0])}
                         required 
                     /> 
                     <br /><br /> 
